@@ -40,6 +40,12 @@ Slicer interactions configured for intuitive filtering across visuals.
 
 Export capability to Excel for deeper offline analysis.
 
+## 📷 Sample Screenshot
+
+Here’s a preview of the Power BI dashboard:
+
+![Dashboard Preview](dashboard_preview.png)
+
 📈 KPIs & Measures Created Using DAX
 Loan Performance
 
@@ -83,6 +89,64 @@ Quarter
 Day
 This allows accurate time intelligence calculations for MTD, MOM%, and PYMTD metrics.
 
+<details>
+  <summary>🧮 Click to view Key DAX Measures</summary>
+
+
+📅 **1. Create a Date Table**
+Purpose: Used to generate a continuous date table automatically based on the data range — essential for time intelligence calculations like MTD and MOM%.
+
+Date = CALENDARAUTO()
+
+
+🔢 2. Total Loan Applications
+Purpose:Calculates the number of unique loan applications, excluding blank IDs.
+
+Total Loan Applications = DISTINCTCOUNTNOBLANK(financial_loan[id])
+
+
+📈 3. Average Interest Rate
+Purpose : Calculates the average interest rate across all loans.
+
+Avg Interest Rate = AVERAGE(financial_loan[int_rate])
+
+
+📊 4. Average Debt-to-Income Ratio (DTI)
+Purpose:Calculates the average debt-to-income ratio of all applicants.
+
+Avg DTI = AVERAGE(financial_loan[dti])
+
+
+📆 5. MTD (Month-To-Date) Calculation
+Purpose: To calculate cumulative metrics for the current month up to today.
+
+MTD Total Amount Received = 
+CALCULATE(
+    [Total Amount Received],
+    DATESMTD('date'[Date])
+)
+
+📆 6. PYMTD (Previous Month-To-Date) Calculation
+Purpose: To compare the same period from the previous month.
+
+PYMTD Amount Received = 
+CALCULATE(
+    [Total Amount Received],
+    DATESMTD(DATEADD('date'[Date], -1, MONTH))
+)
+
+📉 7. MOM% (Month-on-Month Percentage Change)
+Purpose: To measure percentage growth or decline from last month's performance to the current month.
+
+MOM% Total Loan Applications = 
+DIVIDE(
+    [DATESMTD Total Loan Applications] - [PYMTD TOTAL LOAN APPLICATIONS],
+    [PYMTD TOTAL LOAN APPLICATIONS],
+    "NA"
+)
+
+</details>
+
 🧠 Highlights
 Created complex KPI measures with COALESCE, CALCULATE, FILTER, and time intelligence functions.
 
@@ -102,10 +166,6 @@ Ensure financial_loan.csv is in the same folder and correctly loaded.
 Explore each page (Summary, Menu, Details, Overview).
 
 Use slicers (State, Grade, Good vs Bad Loan, etc.) to interact with the dashboard.
-
-📎 Sample Screenshot
-![Dashboard Preview](dashboard_preview.png)
-
 
 
 🎯 Skills Demonstrated
