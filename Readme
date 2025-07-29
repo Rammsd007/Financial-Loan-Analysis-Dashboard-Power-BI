@@ -89,37 +89,36 @@ Quarter
 Day
 This allows accurate time intelligence calculations for MTD, MOM%, and PYMTD metrics.
 
-<details>
-  <summary>🧮 Click to view Key DAX Measures</summary>
+## 🧮 Key DAX Measures
 
 
 📅 **1. Create a Date Table**
 Purpose: Used to generate a continuous date table automatically based on the data range — essential for time intelligence calculations like MTD and MOM%.
-
+```DAX
 Date = CALENDARAUTO()
 
 
 🔢 2. Total Loan Applications
 Purpose:Calculates the number of unique loan applications, excluding blank IDs.
-
+```DAX
 Total Loan Applications = DISTINCTCOUNTNOBLANK(financial_loan[id])
 
 
 📈 3. Average Interest Rate
 Purpose : Calculates the average interest rate across all loans.
-
+```DAX
 Avg Interest Rate = AVERAGE(financial_loan[int_rate])
 
 
 📊 4. Average Debt-to-Income Ratio (DTI)
 Purpose:Calculates the average debt-to-income ratio of all applicants.
-
+```DAX
 Avg DTI = AVERAGE(financial_loan[dti])
 
 
 📆 5. MTD (Month-To-Date) Calculation
 Purpose: To calculate cumulative metrics for the current month up to today.
-
+```DAX
 MTD Total Amount Received = 
 CALCULATE(
     [Total Amount Received],
@@ -128,7 +127,7 @@ CALCULATE(
 
 📆 6. PYMTD (Previous Month-To-Date) Calculation
 Purpose: To compare the same period from the previous month.
-
+```DAX
 PYMTD Amount Received = 
 CALCULATE(
     [Total Amount Received],
@@ -137,7 +136,7 @@ CALCULATE(
 
 📉 7. MOM% (Month-on-Month Percentage Change)
 Purpose: To measure percentage growth or decline from last month's performance to the current month.
-
+```DAX
 MOM% Total Loan Applications = 
 DIVIDE(
     [DATESMTD Total Loan Applications] - [PYMTD TOTAL LOAN APPLICATIONS],
@@ -180,6 +179,6 @@ Interactive Dashboard Design
 Storytelling with Data
 
 🗂 Dataset
-Source: Cleaned and structured financial loan data (financial_loan.csv)
+Source: Cleaned and structured financial loan data (https://drive.google.com/file/d/1-hYRBvzowtl8VW4izHZF0kzccY6lFU15/view?usp=sharing)
 
 ~38,000 records with details like: loan_id, funded_amount, interest_rate, purpose, grade, home_ownership, issue_date, loan_status
