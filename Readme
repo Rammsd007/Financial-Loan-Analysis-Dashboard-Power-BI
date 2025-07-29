@@ -1,0 +1,123 @@
+🔷 Project Title:
+Financial Loan Analysis Dashboard – Power BI
+
+📌 Overview
+This Power BI dashboard provides a comprehensive analysis of a financial institution’s lending operations using real-world-style loan data. The dashboard offers insights into loan performance, customer behavior, risk categorization, and month-over-month (MoM) and month-to-date (MTD) metrics using advanced DAX and custom visualizations.
+
+🔨 Tools Used
+Power BI Desktop
+
+DAX for custom measures
+
+Power Query for data transformation
+
+Excel (financial_loan.csv) as data source
+
+📊 Features & Visuals
+Interactive visualizations:
+
+Bar Chart
+
+Multi-Row Card
+
+Tree Map
+
+KPI Cards
+
+Donut Chart
+
+Table
+
+Slicers
+
+Buttons and Shapes
+
+Text Boxes
+
+Custom visual grouping and layout formatting for enhanced readability.
+
+Slicer interactions configured for intuitive filtering across visuals.
+
+Export capability to Excel for deeper offline analysis.
+
+📈 KPIs & Measures Created Using DAX
+Loan Performance
+
+Total Loan Applications
+
+Total Funded Amount
+
+Total Amount Received
+
+Good Loan Applications / Funded / Received
+
+Bad Loan Applications / Funded / Received
+
+Good Loan % vs Bad Loan %
+
+Interest & Risk Metrics
+
+Average DTI (Debt-to-Income Ratio)
+
+Average Interest Rate
+
+Time-based Metrics (MTD / MOM / PYMTD)
+
+MTD Loan Applications / Funded / Received / Avg DTI / Avg Interest Rate
+
+MOM% for Loan Applications / Funded / Received / Avg DTI / Avg Interest Rate
+
+PYMTD Loan Applications / Funded / Received
+
+📅 Date Table
+A dedicated calendar table named Date was created using the CALENDARAUTO() function, with derived columns:
+
+Year
+
+Month
+
+Month Name
+
+Quarter
+
+Day
+This allows accurate time intelligence calculations for MTD, MOM%, and PYMTD metrics.
+
+🧠 Highlights
+Created complex KPI measures with COALESCE, CALCULATE, FILTER, and time intelligence functions.
+
+Handled data formatting challenges (e.g., converting "5M" text values into actual numbers).
+
+Applied visual-level, page-level, and report-level filters to control interactions smartly.
+
+Categorized loans into Good vs Bad Loans using domain logic based on loan_status.
+
+Displayed loan application patterns by term, state, grade, home ownership, and more.
+
+📤 How to Use
+Download the .pbix file and open in Power BI Desktop.
+
+Ensure financial_loan.csv is in the same folder and correctly loaded.
+
+Explore each page (Summary, Menu, Details, Overview).
+
+Use slicers (State, Grade, Good vs Bad Loan, etc.) to interact with the dashboard.
+
+📎 Sample Screenshot
+
+
+🎯 Skills Demonstrated
+Business Understanding & KPI Derivation
+
+Data Cleaning & Transformation
+
+DAX & Time Intelligence
+
+Interactive Dashboard Design
+
+Storytelling with Data
+
+🗂 Dataset
+Source: Cleaned and structured financial loan data (financial_loan.csv)
+
+~38,000 records with details like: loan_id, funded_amount, interest_rate, purpose, grade, home_ownership, issue_date, loan_status
